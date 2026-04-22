@@ -1,0 +1,16 @@
+{
+  "name": "Integration - SubmitRequirement Endpoint with Malformed JSON",
+  "description": "Ensures that submitting malformed JSON to /submit-requirement triggers the validation_exception_handler.",
+  "test_type": "integration",
+  "input": "POST /submit-requirement with malformed JSON body",
+  "output": "HTTP 422 response with success=False, error, details, and tips",
+  "success_criteria": [
+    "response.status_code == 422",
+    "response.json()['success'] is False",
+    "response.json()['error'] contains 'Malformed JSON'"
+  ],
+  "error_scenarios": [
+    "Exception handler not triggered",
+    "Response does not contain expected fields"
+  ]
+}
