@@ -1,0 +1,17 @@
+{
+  "name": "Integration - Full Orchestration Success",
+  "description": "Tests the integration of validation, LLMService, CodeFormatter, CodeQualityChecker, and ErrorHandler via AgentOrchestrator.process_request for a valid requirement.",
+  "test_type": "integration",
+  "input": "Call AgentOrchestrator.process_request('Write a Python function to reverse a string.', 'code')",
+  "output": "Dict with success=True, code containing formatted Python code, and quality_report",
+  "success_criteria": [
+    "result['success'] is True",
+    "result['code'] contains 'def'",
+    "result['quality_report'] is not None"
+  ],
+  "error_scenarios": [
+    "LLMService.generate_code raises exception",
+    "CodeFormatter fails",
+    "CodeQualityChecker fails"
+  ]
+}
