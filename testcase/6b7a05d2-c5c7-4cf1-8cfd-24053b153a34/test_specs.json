@@ -1,0 +1,17 @@
+{
+  "name": "Functional - Successful Requirement Submission",
+  "description": "Validates that the /submit-requirement endpoint returns a successful response with generated code for a valid requirement.",
+  "test_type": "functional",
+  "input": "POST /submit-requirement with SubmitRequirementRequest(requirement_description='Write a Python function to add two numbers.', output_format='code')",
+  "output": "SubmitRequirementResponse with success=True, code containing Python code block, and quality_report present",
+  "success_criteria": [
+    "response.success is True",
+    "response.code is not None",
+    "response.code contains 'def'",
+    "response.quality_report is not None"
+  ],
+  "error_scenarios": [
+    "LLM service unavailable",
+    "Formatting or quality check fails"
+  ]
+}
