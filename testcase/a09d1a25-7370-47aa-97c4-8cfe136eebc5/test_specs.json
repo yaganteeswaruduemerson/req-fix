@@ -1,0 +1,15 @@
+{
+  "name": "Integration - LLM Failure and Fallback",
+  "description": "Simulates LLM failure in LLMService.generate_code and verifies that AgentOrchestrator returns a fallback response after retries.",
+  "test_type": "integration",
+  "input": "Mock LLMService.generate_code to raise Exception; call AgentOrchestrator.process_request('Write a Python function to multiply two numbers.', 'code')",
+  "output": "Dict with success=False, fallback and error fields populated",
+  "success_criteria": [
+    "result['success'] is False",
+    "result['fallback'] == FALLBACK_RESPONSE",
+    "result['error'] contains 'Code generation failed'"
+  ],
+  "error_scenarios": [
+    "ErrorHandler returns incorrect error structure"
+  ]
+}
