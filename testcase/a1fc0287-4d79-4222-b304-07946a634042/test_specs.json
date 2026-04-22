@@ -1,0 +1,15 @@
+{
+  "name": "Functional - Requirement Too Short",
+  "description": "Checks that submitting a requirement description that is too short returns a clarification message and error.",
+  "test_type": "functional",
+  "input": "POST /submit-requirement with SubmitRequirementRequest(requirement_description='Add', output_format='code')",
+  "output": "SubmitRequirementResponse with success=False, clarification and error fields populated",
+  "success_criteria": [
+    "response.success is False",
+    "response.clarification is not None",
+    "response.error contains 'invalid or unclear'"
+  ],
+  "error_scenarios": [
+    "Validation logic fails to catch short input"
+  ]
+}
