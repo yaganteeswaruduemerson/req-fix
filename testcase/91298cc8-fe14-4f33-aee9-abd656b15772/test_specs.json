@@ -1,0 +1,13 @@
+{
+  "name": "Functional - Health Check Endpoint",
+  "description": "Ensures the /health endpoint returns status ok.",
+  "test_type": "functional",
+  "input": "GET /health",
+  "output": "JSON response {'status': 'ok'}",
+  "success_criteria": [
+    "response.status == 'ok'"
+  ],
+  "error_scenarios": [
+    "Application not running"
+  ]
+}
